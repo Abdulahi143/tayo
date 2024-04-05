@@ -38,8 +38,8 @@ export default async function RootLayout({
           <ClientOnly>
           <ReactQueryProvider>
           {children}
+          {draftMode().isEnabled && <LiveVisualEditing />}
           </ReactQueryProvider>
-            {draftMode().isEnabled && <LiveVisualEditing />}
           </ClientOnly>
           <Footer />
       </body>

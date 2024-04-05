@@ -7,7 +7,7 @@ import Hero from "./(protected)/_components/hero/Hero";
 import ClientOnly from "./components/ClientOnly";
 
 
-export default function Home() {
+const Home =  () => {
   return (
     <ClientOnly>
       <Hero />
@@ -19,3 +19,5 @@ export default function Home() {
     </ClientOnly>
   );
 }
+
+export default Home;
