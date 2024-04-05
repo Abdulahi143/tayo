@@ -8,7 +8,7 @@ import BlogContent from "@/app/components/BlogContent";
 
 export const revalidate = 30;
 
-export default async function BlogPage() {
+const  BlogPage  = async () => {
   const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY);
   
   return draftMode().isEnabled ? (
@@ -24,3 +24,5 @@ export default async function BlogPage() {
     </ClientOnly>
   );
 }
+
+export default BlogPage;

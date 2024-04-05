@@ -8,11 +8,7 @@ import BlogContent from "@/app/components/BlogContent";
 
 export const revalidate = 30;
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: QueryParams;
-}) {
+const CategoryPage = async ({ params }: { params: QueryParams }) => {
   const categoryId = params.category;
   if (!categoryId) {
     return <div>No category ID provided</div>;
@@ -28,16 +24,17 @@ export default async function CategoryPage({
     const posts = initial.data[0].posts;
     return draftMode().isEnabled ? (
       <ClientOnly>
-        {/* <PostsPreview initial={initial} /> */}
         <h1>ABaba</h1>
       </ClientOnly>
     ) : (
       <ClientOnly>
-        <BlogContent sanityPosts={posts} />
+        {posts && <BlogContent sanityPosts={posts} />}
       </ClientOnly>
     );
   } catch (error) {
     console.error("Error loading category and posts:", error);
     return <div>Error loading category and posts:</div>;
   }
-}
+};
+
+export default CategoryPage;
