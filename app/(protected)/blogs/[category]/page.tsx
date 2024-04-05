@@ -2,9 +2,9 @@ import { QueryParams, SanityDocument } from "next-sanity";
 import { loadQuery } from "@/sanity/lib/store";
 import { draftMode } from "next/headers";
 import ClientOnly from "@/app/components/ClientOnly";
-import BlogContent from "@/app/components/BlogCard";
 import PostsPreview from "@/components/PostPreview";
 import { SORT_WITH_CATEGORIES } from "@/sanity/lib/queries";
+import BlogContent from "@/app/components/BlogContent";
 
 export const revalidate = 30;
 

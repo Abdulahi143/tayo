@@ -3,9 +3,8 @@ import { loadQuery } from "@/sanity/lib/store";
 import { draftMode } from "next/headers";
 import { CATEGORIES_QUERY, POSTS_QUERY, SORT_WITH_CATEGORIES } from "@/sanity/lib/queries";
 import ClientOnly from "@/app/components/ClientOnly";
-import BlogContent from "@/app/components/BlogCard";
 import PostsPreview from "@/components/PostsPreview";
-// import Categories from "@/app/components/Categories";
+import BlogContent from "@/app/components/BlogContent";
 
 export const revalidate = 30;
 

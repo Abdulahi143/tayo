@@ -7,9 +7,11 @@ import { draftMode } from 'next/headers';
 import Loading from '@/app/loading';
 import CategorySection from './[category]/CategorySection';
 
-export default function BlogLayout({ children }: { children: React.ReactNode }) {
-
-
+export default function BlogLayout({
+  children, 
+}: {
+  children: React.ReactNode
+}) {
   return (
 
 <Suspense fallback={<Loading />}>
@@ -23,8 +25,6 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         <div className="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
         {children}
       </div>
-
-          {/* <FilterList list={sorting} title="Sort by" /> */}
       </div>
 </Suspense>
   );

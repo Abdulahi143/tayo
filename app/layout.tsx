@@ -26,11 +26,11 @@ Föreningens ändamål är följande:
 För mer information, kontakta föreningen via mejladress: info@tayoforening.se, tayoforeningborlange@gmail.com eller 0769075107`,
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({
+  children, 
+}: {
+  children: React.ReactNode
+}) {
 
   return (
     <html lang="en">
