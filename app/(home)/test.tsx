@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Footer from "../_components/footer/Footer";
-import LiveVisualEditing from "../components/LiveVisualEditing";
-import { draftMode } from "next/headers";
-import ClientOnly from "../components/ClientOnly";
-import Navbar from "../_components/navbar/Navbar";
-import { ReactQueryProvider } from "../providers/ReactQueryProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+
+
+import type { Metadata } from "next";
+import "./globals.css";
+import ClientOnly from "../components/ClientOnly";
+import { draftMode } from "next/headers";
+import LiveVisualEditing from "../components/LiveVisualEditing";
+import { ReactQueryProvider } from "../providers/ReactQueryProvider";
+import Navbar from "../_components/navbar/Navbar";
+import Footer from "../_components/footer/Footer";
+
+
 
 export const metadata: Metadata = {
   title: "Tayo förening | Kvaliten är bättre än kvantiten!",
@@ -27,22 +29,22 @@ Föreningens ändamål är följande:
 För mer information, kontakta föreningen via mejladress: info@tayoforening.se, tayoforeningborlange@gmail.com eller 0769075107`,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ReactQueryProvider>
+      <body className={`nunito.className bg-[#010922]`}>
           <Navbar />
           <ClientOnly>
-            {children}
-            {draftMode().isEnabled && <LiveVisualEditing />}
+          <ReactQueryProvider>
+          {children}
+          {draftMode().isEnabled && <LiveVisualEditing />}
+          </ReactQueryProvider>
           </ClientOnly>
           <Footer />
-        </ReactQueryProvider>
       </body>
     </html>
   );
