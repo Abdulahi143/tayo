@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 
-const AboutPage = () => {
+  export default function AboutPage() {
   return (
     <div className="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 mt-24">
     <div className="flex flex-col lg:flex-row justify-between gap-8">
@@ -92,5 +92,3 @@ const AboutPage = () => {
   
   );
 };
-
-export default AboutPage;
