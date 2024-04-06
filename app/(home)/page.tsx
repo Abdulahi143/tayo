@@ -8,7 +8,7 @@ import Hero from "../_components/hero/Hero";
 import ClientOnly from "../components/ClientOnly";
 
 
-const Home =  () => {
+export default function Home() {
   return (
     <ClientOnly>
       <Hero />
@@ -20,5 +20,3 @@ const Home =  () => {
     </ClientOnly>
   );
 }
-
-export default Home;
