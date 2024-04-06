@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./(protected)/_components/navbar/Navbar";
-import Footer from "./(protected)/_components/footer/Footer";
 import ClientOnly from "./components/ClientOnly";
 import { draftMode } from "next/headers";
 import LiveVisualEditing from "./components/LiveVisualEditing";
 import { ReactQueryProvider } from "./providers/ReactQueryProvider";
+import Navbar from "./_components/navbar/Navbar";
+import Footer from "./_components/footer/Footer";
 
 
 
