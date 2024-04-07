@@ -11,7 +11,7 @@ import { draftMode } from "next/headers";
 import ClientOnly from "@/app/components/ClientOnly";
 import SingleBlogPage from "@/app/components/SingleBlog";
 import PostPreview from "@/components/PostPreview";
-import LatestPosts from "@/app/blogs/_components/LatestPosts";
+import LatestPosts from "../../blogs/_components/LatestPosts";
 
 export const revalidate = 30;
 
