@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function CoursesSection() {
   const Courses = [
@@ -89,7 +90,9 @@ export function CoursesSection() {
                         {subtitle}
                       </span>
                       <Button className="mt-4 bg-white text-blue-600 hover:bg-[#FFD700]">
+                        <Link href="/courses">
                         Läs mer...
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>

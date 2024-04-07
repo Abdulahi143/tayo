@@ -24,7 +24,7 @@ const Hero = () => {
               </h2>
               <div className="flex flex-col justify-center space-y-2 pb-16 pt-10 sm:flex-row sm:items-center sm:space-x-2 sm:space-y-0 lg:justify-start">
                 <Link
-                  href="#"
+                  href="/about"
                   className="inline-flex items-center justify-center space-x-2 rounded-lg border border-[#066AFF] bg-[#066AFF] px-7 py-3.5 font-semibold leading-6 text-white hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:ring focus:ring-blue-400 focus:ring-opacity-50 active:border-blue-700 active:bg-blue-700 dark:focus:ring-blue-400 dark:focus:ring-opacity-90 font-montserrat"
                 >
                   <BiBookReader className="hi-mini hi-arrow-down-tray inline-block size-5 opacity-75 " />
@@ -34,13 +34,16 @@ const Hero = () => {
             </div>
           </div>
           <div className="lg:ml-16 lg:flex lg:w-1/2 lg:items-center lg:justify-center">
-            <div className="relative mx-5 lg:w-96">
-              <div className="bg-tranparent absolute left-0 top-0 -ml-20 -mt-16 size-40 rounded-full border border-[#FFC52C] dark:border-blue-900 lg:size-72" />
-              <div className="bg-tranparent absolute left-0 top-0 -ml-14 -mt-20 size-40 rounded-full border border-blue-100 dark:border-blue-950 lg:size-72" />
-              <div className="bg-tranparent absolute bottom-0 right-0 -mb-16 -mr-20 size-40 rounded-full border border-blue-200 dark:border-blue-900 lg:size-72" />
-              <div className="bg-tranparent absolute bottom-0 right-0 -mb-20 -mr-14 size-40 rounded-full border border-[#FFC52C] dark:border-blue-950 lg:size-72" />
+            <div className="relative mx-5 lg:w-96 ">
+              <div className="bg-transparent absolute left-0 top-0 -ml-20 -mt-16 w-40 h-40 rounded-full border border-[#FFC52C] dark:border-blue-900 lg:w-72 lg:h-72 hidden md:block" />
+              <div className="bg-transparent absolute left-0 top-0 -ml-14 -mt-20 w-40 h-40 rounded-full border border-blue-100 dark:border-blue-950 lg:w-72 lg:h-72 hidden md:block" />
+              <div className="bg-transparent absolute bottom-0 right-0 -mb-16 -mr-20 w-40 h-40 rounded-full border border-blue-200 dark:border-blue-900 lg:w-72 lg:h-72 hidden md:block" />
+              <div className="bg-transparent absolute bottom-0 right-0 -mb-20 -mr-14 w-40 h-40 rounded-full border border-[#FFC52C] dark:border-blue-950 lg:w-72 lg:h-72 hidden md:block" />
+
+              
               <div className="absolute inset-0 -m-6 -rotate-2 rounded-xl bg-[#FFC52C] dark:bg-gray-800" />
               <div className="absolute inset-0 -m-6 rotate-1 rounded-xl bg-blue-300 bg-opacity-75 shadow-inner dark:bg-blue-900 dark:bg-opacity-75" />
+             
               <Image
                 src="/images/tayoo.jpg"
                 className="relative mx-auto rounded-lg shadow-lg"
