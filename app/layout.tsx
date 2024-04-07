@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+     <body className={`nunito.className bg-[#010922]`}>
         <ReactQueryProvider>
           <Navbar />
           <ClientOnly>
