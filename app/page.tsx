@@ -3,7 +3,7 @@ import PartnersSection from "./_components/PartnersSection";
 import AboutSection from "./_components/about/AboutSection";
 import ContactSection from "./_components/contact/ContactSection";
 import { CoursesSection } from "./_components/coureses/CoursesSection";
-import GallerySection from "./_components/gallery/GallerySection";
+import GallerySectionFetched from "./_components/gallery/GalleryFecthed";
 import Hero from "./_components/hero/Hero";
 import ClientOnly from "./components/ClientOnly";
 
@@ -16,7 +16,7 @@ export default function Home() {
       <AboutSection />
       <ContactSection />
       <PartnersSection />
-      <GallerySection />
+      <GallerySectionFetched />
     </ClientOnly>
   );
 }

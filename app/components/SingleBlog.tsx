@@ -73,7 +73,7 @@ export default function SingleBlogPage({ post, categories  }: { post: SanityDocu
             </div>
             <div className="mt-8">
               {categories?.map(category => (
-                <Link href={`/blogs/category/${category._id}`} key={category._id}>
+                <Link href={`/blogs/${category._id}`} key={category._id}>
                   <h2 className="hover:underline cursor-pointer">
                     {category.title}
                   </h2>

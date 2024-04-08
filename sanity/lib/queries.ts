@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
-
-export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] | order(_createdAt desc) {
+// Add pagination like this Mr.Abdalla: [0...9] to display only up to 10 items per page
+export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)] | order(_createdAt desc)  {
     _id,
     title,
     shortDescription,
@@ -77,3 +77,9 @@ export const SORT_WITH_CATEGORIES = groq`*[ _type == "category" && _id == $categ
     },
 } }`;
 
+
+export const GALLERY_IMAGES_Query = groq`
+*[_type == "gallery"] {
+  galleryImage,
+  caption
+}`

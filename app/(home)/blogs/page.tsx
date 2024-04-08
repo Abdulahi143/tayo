@@ -10,7 +10,6 @@ export const revalidate = 30;
 
 const  BlogPage  = async () => {
   const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY);
-  
   return draftMode().isEnabled ? (
     <ClientOnly>
     <PostsPreview initial={initial} />
