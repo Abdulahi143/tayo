@@ -26,6 +26,9 @@ Föreningens ändamål är följande:
 9. Skapa meningsfulla fritidsaktiviteter för ungdomar.
 
 För mer information, kontakta föreningen via mejladress: info@tayoforening.se, tayoforeningborlange@gmail.com eller 0769075107`,
+openGraph: {
+  images: 'https://main--tayo-website-v2.netlify.app/blog/ciid-wanaagsan/'
+}
 };
 
 export default function RootLayout({
