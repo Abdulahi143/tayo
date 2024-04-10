@@ -27,7 +27,7 @@ Föreningens ändamål är följande:
 
 För mer information, kontakta föreningen via mejladress: info@tayoforening.se, tayoforeningborlange@gmail.com eller 0769075107`,
 openGraph: {
-  images: 'https://main--tayo-website-v2.netlify.app/'
+  images: 'https://main--tayo-website-v2.netlify.app/tBJczsgyzUAP3woETDr31.jpg'
 }
 };
 
