@@ -15,11 +15,11 @@ export const metadata = {
 };
  
 const interBold = fetch(
-  new URL("../../assets/fonts/Inter-Bold.ttf", import.meta.url)
+  new URL("../../../../assets/fonts/Inter-Bold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const image = fetch(
-  new URL("../../assets/logo-64x64.png", import.meta.url)
+  new URL("../../../../assets/logo-64x64.png", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function Image({ params }: { params: { slug: string } }) {
