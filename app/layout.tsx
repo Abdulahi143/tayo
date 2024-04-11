@@ -12,7 +12,9 @@ import LiveVisualEditing from "./components/LiveVisualEditing";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://main--tayo-website-v2.netlify.app'),
+  metadataBase: process.env.NEXT_PUBLIC_APP_URL
+  ? new URL(`https://agustinmoles.com.ar`)
+  : new URL(`http://localhost:3000 || 3001}`),
   title: "Tayo förening | Kvaliten är bättre än kvantiten!",
   description: `Tayo Förening är en ideell förening som är religiöst och politiskt helt obunden. Föreningen bildades 2013.
 Föreningens ändamål är följande:

@@ -24,7 +24,12 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
     shortDescription,
     'slug': slug.current, 
     content,
-    titleImage,
+    titleImage {
+        ..., // Include all fields from titleImage
+        asset -> {
+            ..., // Include all fields from the asset object
+        }
+    },
     _createdAt,
     _updatedAt,
     "author": author-> {
@@ -33,6 +38,7 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
     },
     "category": category->,
 }`;
+
 
 export const Latest_post_query = groq`
 *[_type == "post" && defined(slug) && slug.current != $slug] | order(_createdAt desc) [0...3] {

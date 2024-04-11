@@ -10,7 +10,7 @@ export const size = {
 export const contentType = 'image/png'
  
 export default async function Image({ params }: { params: { slug: string } }) {
-  const post = await fetch(`https://main--tayo-website-v2.netlify.app/blog/${params.slug}`).then((res) =>
+  const post = await fetch(`blog/${params.slug}`).then((res) =>
     res.json()
   )
  

@@ -19,6 +19,9 @@ const BlogPage = async ({ params }: { params: QueryParams }) => {
   const initial = await loadQuery<SanityDocument>(POST_QUERY, params, {
     perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   });
+
+
+
   const latestInitial = await loadQuery<SanityDocument>(
     Latest_post_query,
     params,
