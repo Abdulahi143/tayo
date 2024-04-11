@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
+// @ts-nocheck
+
 import { ogImageSchema } from '@/lib/og'
 import { ImageResponse } from 'next/og'
  
