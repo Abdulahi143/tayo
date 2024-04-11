@@ -8,6 +8,10 @@ export const size = {
   height: 630,
 }
 export const contentType = 'image/png'
+
+export const metadata = {
+  metadataBase: new URL('https://main--tayo-website-v2.netlify.app'),
+};
  
 export default async function Image({ params }: { params: { slug: string } }) {
   const post = await fetch(`https://.../posts/${params.slug}`).then((res) =>

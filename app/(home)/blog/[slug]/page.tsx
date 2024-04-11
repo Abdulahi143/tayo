@@ -15,7 +15,9 @@ import LatestPosts from "../../blogs/_components/LatestPosts";
 
 export const revalidate = 30;
 
-
+export const metadata = {
+  metadataBase: new URL('https://main--tayo-website-v2.netlify.app'),
+};
 
 export async function generateMetadata({ params }: { params: QueryParams }) {
   const initial = await loadQuery<SanityDocument>(POST_QUERY, params, {
