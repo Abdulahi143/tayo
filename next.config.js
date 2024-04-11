@@ -9,6 +9,7 @@ const nextConfig = {
       },
     ],
   },
+  metadataBase: "https://yourdomain.comhttps://main--tayo-website-v2.netlify.app", // Replace with your actual production domain
 };
 
 module.exports = nextConfig;
