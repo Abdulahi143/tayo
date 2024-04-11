@@ -55,6 +55,7 @@ export default function SingleBlogPage({ post, categories  }: { post: SanityDocu
                       alt="Avatar"
                       height={500}
                       width={500}
+                      priority={true}
                     />
               <div className="grow self-stretch my-auto text-white">
                 {post.author.name}
