@@ -10,21 +10,19 @@ import { ogImageSchema } from "@/lib/og"
 
 export const runtime = "edge"
 
-const interBold = fetch(
-  new URL("../../assets/fonts/Inter-Bold.ttf", import.meta.url)
+const sansitSwashedBold = fetch(
+  new URL("../../assets/fonts/SansitaSwashed-VariableFont_wght.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
 const image = fetch(
-  new URL("../../assets/logo-64x64.png", import.meta.url)
+  new URL("../../assets/logo_tayo.png", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
-const image2 = fetch(new URL("../../assets/icons.png", import.meta.url)).then(
-  (res) => res.arrayBuffer()
-)
+
 
 export default async function handler(req: NextRequest) {
   try {
-    const fontBold = await interBold
+    const fontBold = await sansitSwashedBold
 
     const url = new URL(req.url)
     const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
@@ -53,27 +51,27 @@ export default async function handler(req: NextRequest) {
           <div
             tw="flex leading-[1.1] font-bold tracking-tighter items-center"
             style={{
-              fontFamily: "Inter",
+              fontFamily: "Sansit_Sawshed",
               fontWeight: "bolder",
               marginLeft: "-3px",
               fontSize: "32px",
             }}
           >
             <img width="64" height="64" src={imageData} />
-            <h1 tw="pl-4">James Shopland</h1>
+            <h1 tw="pl-4">Tayo Förening</h1>
           </div>
 
           <div tw="flex flex-col flex-1 ">
             <div
               tw="flex text-xl uppercase font-bold tracking-tight"
-              style={{ fontFamily: "Inter", fontWeight: "normal" }}
+              style={{ fontFamily: "Sansit_Sawshed", fontWeight: "normal" }}
             >
               {values.type}
             </div>
             <div
               tw="flex leading-[1.1] text-[80px] font-bold tracking-tighter"
               style={{
-                fontFamily: "Inter",
+                fontFamily: "Sansit_Sawshed",
                 fontWeight: "bolder",
                 marginLeft: "-3px",
                 fontSize,
@@ -85,13 +83,13 @@ export default async function handler(req: NextRequest) {
           <div tw="flex items-center w-full justify-between">
             <div
               tw="flex text-xl"
-              style={{ fontFamily: "Inter", fontWeight: "normal" }}
+              style={{ fontFamily: "sansita swashed", fontWeight: "normal" }}
             >
-              jamesshopland.com
+              Tayoforening.se
             </div>
             <div
               tw="flex items-center text-xl"
-              style={{ fontFamily: "Inter", fontWeight: "normal" }}
+              style={{ fontFamily: "sansita swashed", fontWeight: "normal" }}
             >
               <img height="86" src={image2Data} />
             </div>
@@ -103,7 +101,7 @@ export default async function handler(req: NextRequest) {
         height: 630,
         fonts: [
           {
-            name: "Inter",
+            name: "Sansit_Sawshed",
             data: fontBold,
             weight: 700,
             style: "normal",
