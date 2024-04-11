@@ -7,9 +7,8 @@ import { ImageResponse } from "next/og"
 
 import { ogImageSchema } from "@/lib/validations/og"
 
-export const config = {
-  runtime: "edge",
-}
+
+export const runtime = "edge"
 
 const interBold = fetch(
   new URL("../../assets/fonts/Inter-Bold.ttf", import.meta.url)
