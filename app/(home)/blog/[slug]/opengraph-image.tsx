@@ -1,46 +1,44 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/alt-text */
-// @ts-nocheck
-import { NextRequest } from "next/server"
+import { ogImageSchema } from '@/lib/og'
+import { ImageResponse } from 'next/og'
+ 
+export const runtime = 'edge'
+ 
 
-import { ImageResponse } from "next/og"
-import { ogImageSchema } from "@/lib/og"
-
-
-
-export const runtime = "edge"
-
+ 
 const sansitSwashedBold = fetch(
-  new URL("../../../assets/fonts/SansitaSwashed-VariableFont_wght.ttf", import.meta.url)
-).then((res) => res.arrayBuffer())
+    new URL("../../../../assets/fonts/SansitaSwashed-VariableFont_wght.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer())
 
-const image = fetch(
-  new URL("../../../assets/logo_tayo.png", import.meta.url)
-).then((res) => res.arrayBuffer())
+  const image = fetch(
+    new URL("../../../../assets/logo_tayo.png", import.meta.url)
+  ).then((res) => res.arrayBuffer())
+
+  
+
+export default async function Image({ params }: { params: { slug: string } }) {
+  const post = await fetch(`https://.../posts/${params.slug}`).then((res) =>
+    res.json()
+  )
+  const fontBold = await sansitSwashedBold
+  const imageData = await image
+ 
+
+  const url = new URL(params.slug)
+  const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
+  const heading =
+    values.heading.length > 140
+      ? `${values.heading.substring(0, 140)}...`
+      : values.heading
+
+  const { mode } = values
+  const paint = mode === "dark" ? "#fff" : "#000"
 
 
+  const fontSize = heading.length > 30 ? "70px" : "100px"
 
-export default async function handler(req: NextRequest) {
-  try {
-    const fontBold = await sansitSwashedBold
 
-    const url = new URL(req.url)
-    const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))
-    const heading =
-      values.heading.length > 140
-        ? `${values.heading.substring(0, 140)}...`
-        : values.heading
-
-    const { mode } = values
-    const paint = mode === "dark" ? "#fff" : "#000"
-
-    const fontSize = heading.length > 30 ? "70px" : "100px"
-
-    const imageData = await image
-    const image2Data = await image2
-
-    return new ImageResponse(
-      (
+  return new ImageResponse(
+    (
         <div
           tw="flex relative flex-col p-12 w-full h-full items-start"
           style={{
@@ -91,12 +89,12 @@ export default async function handler(req: NextRequest) {
               tw="flex items-center text-xl"
               style={{ fontFamily: "sansita swashed", fontWeight: "normal" }}
             >
-              <img height="86" src={image2Data} />
+              {/* <img height="86" src={image2Data} /> */}
             </div>
           </div>
         </div>
       ),
-      {
+    {
         width: 1200,
         height: 630,
         fonts: [
@@ -108,10 +106,5 @@ export default async function handler(req: NextRequest) {
           },
         ],
       }
-    )
-  } catch (error) {
-    return new Response(`Failed to generate image`, {
-      status: 500,
-    })
-  }
+  )
 }

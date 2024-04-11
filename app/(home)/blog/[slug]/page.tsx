@@ -66,11 +66,6 @@ const BlogPage = async ({ params }: { params: QueryParams }) => {
     perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   });
 
-  // if(!initial || initial.data) {
-  //   return {}
-  // }
-
-  // const post = initial.data;
   console.log("post", initial);
 
 
