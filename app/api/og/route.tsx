@@ -4,8 +4,8 @@
 import { NextRequest } from "next/server"
 
 import { ImageResponse } from "next/og"
+import { ogImageSchema } from "@/lib/og"
 
-import { ogImageSchema } from "@/lib/validations/og"
 
 
 export const runtime = "edge"
