@@ -12,9 +12,27 @@ import ClientOnly from "@/app/components/ClientOnly";
 import SingleBlogPage from "@/app/components/SingleBlog";
 import PostPreview from "@/components/PostPreview";
 import LatestPosts from "../../blogs/_components/LatestPosts";
+import { Metadata } from "next";
+import { urlFor } from "@/lib/sanity";
 
 export const revalidate = 30;
 
+export async function generateMetadata({ params }: { params: QueryParams }): Promise<Metadata> {
+  const blog = await loadQuery<SanityDocument>(POST_QUERY, params, {
+  });
+  const title = blog?.data.title;
+  const description = blog?.data.shortDescription;
+  const imageUrl = urlFor(blog.data.titleImage).url()
+console.log("imageUrl: ", imageUrl);
+
+  return {
+    title: title,
+    description: description,
+    openGraph: {
+      images: [imageUrl],
+    },
+  }
+}
 
 
 
@@ -22,8 +40,6 @@ const BlogPage = async ({ params }: { params: QueryParams }) => {
   const initial = await loadQuery<SanityDocument>(POST_QUERY, params, {
     perspective: draftMode().isEnabled ? "previewDrafts" : "published",
   });
-
-  console.log("post", initial);
 
 
 

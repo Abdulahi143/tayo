@@ -23,8 +23,8 @@ Samarbete och stöd
               <Image src="/images/alrahmalogo.png" alt="borlängelogo" height={9} width={200} className="rounded-3xl"/>
               
      </Link>
-      <Link href="#" className="flex justify-center items-center">
-              <Image src="/images/borlangelogo.png" alt="borlängelogo" height={9} width={200}/>
+      <Link href="#" className="flex justify-center items-center ">
+              <Image src="/images/somaliskariksförbund.png" className="rounded-3xl" alt="borlängelogo" height={9} width={200}/>
      </Link>
     </div>
   </div>
