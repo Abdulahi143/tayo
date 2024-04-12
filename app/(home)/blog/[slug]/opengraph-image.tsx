@@ -25,7 +25,7 @@ export default async function Image() {
       <div
         style={{
           fontSize: 128,
-          background: 'white',
+          background: 'black',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -33,7 +33,7 @@ export default async function Image() {
           justifyContent: 'center',
         }}
       >
-        About Acme
+        TAYO FÖRENING BORLÄNGE
       </div>
     ),
     // ImageResponse options
