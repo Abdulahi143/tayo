@@ -15,7 +15,7 @@ export const size = {
 }
  
 const image = fetch(
-  new URL("../../../assets/logo_tayo.png", import.meta.url)
+  new URL("../../../../assets/logo_tayo.png", import.meta.url)
 ).then((res) => res.arrayBuffer())
  
 // Image generation
