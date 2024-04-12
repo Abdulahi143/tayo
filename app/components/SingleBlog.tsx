@@ -9,7 +9,6 @@ import { urlFor } from "@/lib/sanity";
 
 
 export default function SingleBlogPage({ post, categories  }: { post: SanityDocument, categories?: SanityDocument[] }) {
-  console.log("Title Image URL:", urlFor(post.titleImage).url());
   return (  
     <div className="max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">

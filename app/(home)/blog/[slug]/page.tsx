@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: { params: QueryParams }): Pro
   const title = blog?.data.title;
   const description = blog?.data.shortDescription;
   const imageUrl = urlFor(blog.data.titleImage).url()
-console.log("imageUrl: ", imageUrl);
 
   return {
     title: title,

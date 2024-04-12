@@ -2,28 +2,61 @@
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { IoIosSend } from "react-icons/io";
+import { toast } from "sonner";
+
 import { useEffect, useState } from "react";
 
+import { z } from "zod";
+import { ContactFormSchema } from "@/lib/schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { addEntry, sendEmail } from "@/app/api/form/actions";
+
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
+
+const FormDataSchema = z.object({
+  name: z.string().min(1, "Name is required."),
+  email: z.string().email().min(1, "Email is required."),
+  phoneNumber: z.string().regex(phoneRegex, "Invalid Number."),
+  message: z
+    .string()
+    .min(6, {
+      message: "Message is required and must be at least 6 characters.",
+    }),
+});
+
+type ContactFormInputs = z.infer<typeof FormDataSchema>;
+
 const ContactSection = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormInputs>({
+    resolver: zodResolver(FormDataSchema),
+  });
+
+  const processForm: SubmitHandler<ContactFormInputs> = async (data) => {
+    const result = await sendEmail(data);
+
+    if (result?.success) {
+      console.log({ data: result.data });
+      toast.success("Meddelande har skickats ✅");
+      reset();
+      return;
+    }
+    console.log(result?.error)
+    toast.error("something went wrong");
+  };
+
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    let rotationTimer: any;
-    if (submitted) {
-      rotationTimer = setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }
-    return () => clearTimeout(rotationTimer);
-  }, [submitted]);
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault();
-    const isFormValid = true;
-    if (isFormValid) {
-      setSubmitted(true);
-    }
-  };
 
   return (
     <>
@@ -39,7 +72,8 @@ const ContactSection = () => {
                 <span className="block mb-4 text-base text-[#FFC52C] font-semibold">
                   Kontakta oss
                 </span>
-                <h2 className="
+                <h2
+                  className="
                   text-white
                   mb-6
                   uppercase
@@ -48,7 +82,8 @@ const ContactSection = () => {
                   sm:text-[40px]
                   lg:text-[36px]
                   xl:text-[40px]
-                ">
+                "
+                >
                   Fråga eller dela dina tankar
                 </h2>
                 <p className="text-base text-white leading-relaxed mb-9">
@@ -60,12 +95,17 @@ const ContactSection = () => {
             </div>
 
             <div className="group w-full lg:w-1/2 xl:w-5/12 px-4">
-              <div className={`relative transition-all duration-500 transform-style-preserve-3d ${submitted ? 'rotateY-180' : ''}`}>
-                {!submitted ? (
+              <div
+                className={`relative transition-all duration-500 transform-style-preserve-3d ${
+                  submitted ? "rotateY-180" : ""
+                }`}
+              >
                   <div className="bg-[#FFC52C] rounded-lg p-8 sm:p-12 shadow-lg">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit(processForm)}>
                       <div className="mb-4">
-                        <Input placeholder="Namn" className="
+                        <Input
+                          placeholder="Namn"
+                          className="
                           w-full
                           rounded
                           py-3
@@ -75,10 +115,20 @@ const ContactSection = () => {
                           outline-none
                           focus-visible:shadow-none
                           focus:border-primary
-                          " required />
+                          "
+                          {...register("name")}
+                        />
+                        {errors.name?.message && (
+                          <p className="text-sm text-black mt-2 ">
+                            {errors.name.message}
+                          </p>
+                        )}
                       </div>
                       <div className="mb-4">
-                        <Input placeholder="Email" type="email" className="
+                        <Input
+                          placeholder="Email"
+                          type="email"
+                          className="
                           w-full
                           rounded
                           py-3
@@ -88,10 +138,20 @@ const ContactSection = () => {
                           outline-none
                           focus-visible:shadow-none
                           focus:border-primary
-                          " required />
+                          "
+                          {...register("email")}
+                        />
                       </div>
+                      {errors.email?.message && (
+                        <p className="text-sm text-black mb-4">
+                          {errors.email?.message}
+                        </p>
+                      )}
                       <div className="mb-4">
-                        <Input placeholder="Telefonnummer" type="tel" className="
+                        <Input
+                          placeholder="Telefonnummer"
+                          type="tel"
+                          className="
                           w-full
                           rounded
                           py-3
@@ -101,10 +161,19 @@ const ContactSection = () => {
                           outline-none
                           focus-visible:shadow-none
                           focus:border-primary
-                          " required />
+                          "
+                          {...register("phoneNumber")}
+                        />
+                        {errors.phoneNumber?.message && (
+                          <p className="text-sm text-black mt-2 ">
+                            {errors.phoneNumber.message}
+                          </p>
+                        )}
                       </div>
                       <div className="mb-4">
-                        <Textarea placeholder="Meddelande" required className="
+                        <Textarea
+                          placeholder="Meddelande"
+                          className="
                           w-full
                           rounded
                           py-3
@@ -115,11 +184,19 @@ const ContactSection = () => {
                           outline-none
                           focus-visible:shadow-none
                           focus:border-primary grid gap-1.5
-                          " />
+                          "
+                          {...register("message")}
+                        />
+                        {errors.message?.message && (
+                          <p className="text-sm mt-2  text-black">
+                            {errors.message.message}
+                          </p>
+                        )}
                       </div>
-                        <button
-                          type="submit"
-                          className="
+                      <button
+                        type="submit"
+                        className="
+                          flex items-center justify-center
                             w-full
                             text-black
                             bg-blue-500
@@ -129,13 +206,14 @@ const ContactSection = () => {
                             transition
                             hover:bg-opacity-90
                             "
-                        >
-                          Skicka meddelandet
-                        </button>
+                            disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Skickar...' : 'Skicka meddelandet'}
+                        <IoIosSend className="ml-2" />
+                      </button>
                     </form>
                   </div>
-                ) : (
-                  <div className="absolute inset-0 h-full w-full rounded-sm bg-[#010922] px-12 text-center text-slate-200 transform duration-2000 rotateY-180 backface-visibility-hidden">
+                  {/* <div className="absolute inset-0 h-full w-full rounded-sm bg-[#010922] px-12 text-center text-slate-200 transform duration-2000 rotateY-180 backface-visibility-hidden">
                     <div
                       id="card"
                       className="animated rotateY-180 mx-auto mt-18 w-full text-center font-sans"
@@ -169,15 +247,18 @@ const ContactSection = () => {
                         className="py-8 px-4 bg-white rounded-b-lg"
                       >
                         <p id="message" className="text-xl text-gray-600">
-                          Tack för ditt meddelande. Vi återkommer så snart som möjligt.
+                          Tack för ditt meddelande. Vi återkommer så snart som
+                          möjligt.
                           <br />
                           <br />
-                          👋 <span className="text-blue-500 font-bold">Tayo Förening</span>
+                          👋{" "}
+                          <span className="text-blue-500 font-bold">
+                            Tayo Förening
+                          </span>
                         </p>
                       </div>
                     </div>
-                  </div>
-                )}
+                  </div> */}
               </div>
             </div>
           </div>
