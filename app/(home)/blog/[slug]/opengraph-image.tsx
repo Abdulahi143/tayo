@@ -1,6 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/alt-text */
-// @ts-nocheck
+
 import { ogImageSchema } from '@/lib/og'
 import { ImageResponse } from 'next/og'
  
@@ -58,7 +56,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             }}
           >
             
-            <img width="64" height="64" src={imageData} />
+            {/* <img width="64" height="64" src={imageData} /> */}
             <h1 tw="pl-4">Tayo Förening</h1>
           </div>
 
@@ -92,7 +90,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
               tw="flex items-center text-xl"
               style={{ fontFamily: "Inter", fontWeight: "normal" }}
             >
-              <img height="86" src={imageData} />
+              {/* <img height="86" src={imageData} /> */}
             </div>
           </div>
         </div>
