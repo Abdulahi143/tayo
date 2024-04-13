@@ -24,7 +24,7 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
           >
             <div className="flex-shrink-0">
               <Image
-                className="h-60 w-full object-cover"
+                className="h-60 w-object-cover"
                 src={urlFor(post.titleImage).url()}
                 alt=""
                 height={500}

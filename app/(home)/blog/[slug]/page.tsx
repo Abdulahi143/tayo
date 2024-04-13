@@ -11,9 +11,9 @@ import { draftMode } from "next/headers";
 import ClientOnly from "@/app/components/ClientOnly";
 import SingleBlogPage from "@/app/components/SingleBlog";
 import PostPreview from "@/components/PostPreview";
-import LatestPosts from "../../blogs/_components/LatestPosts";
 import { Metadata } from "next";
 import { urlFor } from "@/lib/sanity";
+import LatestPosts from "./LatestPosts";
 
 export const revalidate = 30;
 
@@ -58,10 +58,6 @@ const BlogPage = async ({ params }: { params: QueryParams }) => {
     }
   );
 
-  
-
-
-  
 
   return draftMode().isEnabled ? (
     <ClientOnly>
