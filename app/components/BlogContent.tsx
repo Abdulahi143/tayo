@@ -16,7 +16,7 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
   const router = useRouter();
   return (
     <>
-      {sanityPosts.map((post) => {
+{sanityPosts.map((post) => {
         return (
           <div
             className="flex flex-col rounded-lg shadow-lg overflow-hidden bg-[#021035]"
@@ -24,7 +24,7 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
           >
             <div className="flex-shrink-0">
               <Image
-                className="h-60 w-object-cover"
+                className="h-60 w-full object-cover object-center"
                 src={urlFor(post.titleImage).url()}
                 alt=""
                 height={500}
@@ -33,8 +33,8 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
             </div>
             <div className="flex-1 p-6 flex flex-col justify-between">
               <div className="flex-1">
-                <p className="text-sm leading-5 font-medium text-yellow-500" key={post.category?._id}>
-                  {post.category?.title} | 
+                <p className="text-sm leading-5 font-medium text-yellow-500">
+                  {post.category.title} | 
                       <span className="mx-1">
                         {" "}
                         {new Date(post._createdAt).toLocaleDateString("en-US", {
@@ -58,7 +58,7 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
                     <Image
                       className="h-10 w-10 rounded-full"
                       src={
-                        post.author?.image
+                        post.author.image
                           ? urlFor(post.author.image).url()
                           : "/images/me.jpg"
                       }
@@ -69,11 +69,11 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
                   </div>
                   <div className="ml-3">
                     <p className="text-sm leading-5 font-medium text-white">
-                      {post.author?.name}
+                      {post.author.name}
                     </p>
                     <div className="flex text-sm leading-5 text-white">
                       <span className="mx-1">
-                       {post.author?.role.title}
+                       {post.author.role.title}
                       </span>
                     </div>
                   </div>
@@ -89,6 +89,9 @@ const BlogContent: React.FC<BlogProps> = ({ sanityPosts, categoryId }) => {
           </div>
         );
       })}
+
+
+
     </>
   );
 };

@@ -9,6 +9,7 @@ import { urlFor } from "@/lib/sanity";
 
 
 export default function SingleBlogPage({ post, categories  }: { post: SanityDocument, categories?: SanityDocument[] }) {
+ 
   return (  
     <div className="max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">

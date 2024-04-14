@@ -87,6 +87,7 @@ const BlogPage = async ({ params }: { params: QueryParams }) => {
           </div>
 
           {/* Latest posts should be here */}
+          
           <LatestPosts posts={latestInitial.data} />
         </div>
       </div>
